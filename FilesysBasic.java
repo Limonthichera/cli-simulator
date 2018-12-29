@@ -91,5 +91,14 @@ public abstract class FilesysBasic implements Node, Comparable<Node> {
 	public Iterator<Node> getChildIterator() {
 		return null;
 	}
+	
+	/**
+	 * Does nothing, can be implemented by Folder type nodes
+	 * <br><b>Known Folder type nodes: {@link Folder}</b>
+	 * @return null
+	 */
+	public Node getChildByName(String name) {
+		return null;
+	}
 
 }

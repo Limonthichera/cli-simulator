@@ -51,4 +51,11 @@ public interface Node {
 	 */
 	public Iterator<Node> getChildIterator();
 	
+	/**
+	 * To be used for getting a child with given name
+	 * @param name String - desired name
+	 * @return Node - child of given name if exists, <i>null</i> otherwise
+	 */
+	public Node getChildByName(String name);
+	
 }

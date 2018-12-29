@@ -47,4 +47,20 @@ public class Folder extends FilesysBasic{
 	public Iterator<Node> getChildIterator() {
 		return children.iterator();
 	}
+	
+	/**
+	 * Gets a child with given name
+	 * @param name String - desired name
+	 * @return Node - child of given name if exists, <i>null</i> otherwise
+	 */
+	public Node getChildByName(String name) {
+		Iterator<Node> childIterator = children.iterator();
+		Node child;
+		while (childIterator.hasNext()) {
+			child = childIterator.next();
+			if (child.getName().equals(name)) return child;
+		}
+		
+		return null;
+	}
 }
