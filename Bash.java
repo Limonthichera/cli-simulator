@@ -50,18 +50,19 @@ public class Bash {
 	
 	/**
 	 * Executes the command received as parameter.
+	 * <br><br>
 	 * <table>
-	 * <tr><th>Command</th><th>Parameters</th><th>Functional</th></tr>
-	 * <tr><td>ls</td><td>&lt;path&gt; [-R]</td><td>No</td></tr>
-	 * <tr><td>pwd</td><td>N/A</td><td>Yes</td></tr>
-	 * <tr><td>cd</td><td>&lt;path&gt;</td><td>No</td></tr>
-	 * <tr><td>cp</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td></tr>
-	 * <tr><td>mv</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td></tr>
-	 * <tr><td>rm</td><td>&lt;path&gt;</td><td>No</td></tr>
-	 * <tr><td>touch</td><td>&lt;path&gt;</td><td>No</td></tr>
-	 * <tr><td>mkdir</td><td>&lt;path&gt;</td><td>No</td></tr>
-	 * <tr><td>grep</td><td>&lt;regex&gt;</td><td>No</td></tr>
-	 * <caption>Supported Commands</caption>
+	 * <caption><b>Supported Commands</b></caption>
+	 * <tr><th>Command</th><th>Parameters</th><th>Functional</th><th>See also</th></tr>
+	 * <tr><td>ls</td><td>&lt;path&gt; [-R]</td><td>No</td><td>{@link CmdLS}</td></tr>
+	 * <tr><td>pwd</td><td>N/A</td><td>Yes</td><td>{@link CmdPWD}</td></tr>
+	 * <tr><td>cd</td><td>&lt;path&gt;</td><td>No</td><td>{@link CmdCD}</td></tr>
+	 * <tr><td>cp</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td><td>{@link CmdCP}</td></tr>
+	 * <tr><td>mv</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td><td>{@link CmdMV}</td></tr>
+	 * <tr><td>rm</td><td>&lt;path&gt;</td><td>No</td><td>{@link CmdRM}</td></tr>
+	 * <tr><td>touch</td><td>&lt;path&gt;</td><td>No</td><td>{@link CmdTOUCH}</td></tr>
+	 * <tr><td>mkdir</td><td>&lt;path&gt;</td><td>No</td><td>{@link CmdMKDIR}</td></tr>
+	 * <tr><td>grep</td><td>&lt;regex&gt;</td><td>No</td><td>{@link CmdGREP}</td></tr>
 	 * </table>
 	 * @param cmdLine Command
 	 * @return 0 - success<br>-1/1 - failure

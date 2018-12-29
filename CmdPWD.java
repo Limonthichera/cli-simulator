@@ -1,5 +1,5 @@
 /**
- * PWD Command
+ * PWD Command implementation
  * @author Teodor
  *
  */
