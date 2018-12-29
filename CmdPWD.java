@@ -1,6 +1,14 @@
-
+/**
+ * PWD Command
+ * @author Teodor
+ *
+ */
 public class CmdPWD extends Command {
 
+	/**
+	 * Executes the PWD command
+	 * @return 0 on success, -1 on failure (bash environment variables are not valid)
+	 */
 	@Override
 	public int execute() {
 		try {
@@ -13,6 +21,6 @@ public class CmdPWD extends Command {
 		} catch (Exception e) {
 			return -1;
 		}
-		return 1;
+		return 0;
 	}
 }

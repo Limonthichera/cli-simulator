@@ -1,4 +1,8 @@
-
+/**
+ * Adds File functionality over the FilesysBasic Basic Node
+ * @author Teodor
+ *
+ */
 public class File extends FilesysBasic {
 	// --------------- COMPOSITE - LEAF ---------------
 	

@@ -1,10 +1,22 @@
 import java.io.PrintWriter;
 
+/**
+ * Bash able to execute several commands on a filesystem
+ * @author Teodor
+ *
+ */
 public class Bash {
 	private Node currentDir;
 	private PrintWriter errOutput;
 	private PrintWriter cmdOutput;
 	
+	/**
+	 * Creates a bash terminal in the directory <b>dir</b>. Will write command outputs in <b>cmdOutput</b> and errors
+	 * in <b>errOutput</b>.
+	 * @param dir Bash directory
+	 * @param cmdOutput PrintWriter - command output destination
+	 * @param errOutput PrintWriter - command error destination
+	 */
 	public Bash(Node dir, PrintWriter cmdOutput, PrintWriter errOutput) {
 		currentDir = dir;
 		this.cmdOutput = cmdOutput;
@@ -36,6 +48,25 @@ public class Bash {
 		return null;
 	}
 	
+	/**
+	 * Executes the command received as parameter.
+	 * <table>
+	 * <tr><th>Command</th><th>Parameters</th><th>Functional</th></tr>
+	 * <tr><td>ls</td><td>&lt;path&gt; [-R]</td><td>No</td></tr>
+	 * <tr><td>pwd</td><td>N/A</td><td>Yes</td></tr>
+	 * <tr><td>cd</td><td>&lt;path&gt;</td><td>No</td></tr>
+	 * <tr><td>cp</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td></tr>
+	 * <tr><td>mv</td><td>&lt;source&gt; &lt;destination_folder&gt;</td><td>No</td></tr>
+	 * <tr><td>rm</td><td>&lt;path&gt;</td><td>No</td></tr>
+	 * <tr><td>touch</td><td>&lt;path&gt;</td><td>No</td></tr>
+	 * <tr><td>mkdir</td><td>&lt;path&gt;</td><td>No</td></tr>
+	 * <tr><td>grep</td><td>&lt;regex&gt;</td><td>No</td></tr>
+	 * <caption>Supported Commands</caption>
+	 * </table>
+	 * @param cmdLine Command
+	 * @return 0 - success<br>-1/1 - failure
+	 * @see Command
+	 */
 	public int cmd(String cmdLine) {
 		System.out.println("Command is: " + cmdLine);
 		String[] words = cmdLine.split("[\\s]+");
@@ -51,19 +82,35 @@ public class Bash {
 	}
 	
 	// Change bash variables
+	/**
+	 * Changes the current working directory of this bash
+	 * @param dir New current working directory
+	 */
 	public void setCurrentDirectory(Node dir) {
 		currentDir = dir;
 	}
 	
 	// Get bash variables
+	/**
+	 * Gets the current working directory of this bash
+	 * @return current working directory
+	 */
 	public Node getCurrentDirectory() {
 		return currentDir;
 	}
 	
+	/**
+	 * Gets the current command output PrintWriter
+	 * @return PrintWriter - current command output
+	 */
 	public PrintWriter getCmdOutput() {
 		return cmdOutput;
 	}
 	
+	/**
+	 * Gets the current command error output PrintWriter
+	 * @return PrintWriter - current command error output
+	 */
 	public PrintWriter getErrOutput() {
 		return errOutput;
 	}

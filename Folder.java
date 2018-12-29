@@ -1,6 +1,11 @@
 import java.util.Iterator;
 import java.util.TreeSet;
 
+/**
+ * Adds Folder functionality over the FilesysBasic Basic Node
+ * @author Teodor
+ *
+ */
 public class Folder extends FilesysBasic{
 	// --------------- COMPOSITE - COMPOSITE ---------------
 	
