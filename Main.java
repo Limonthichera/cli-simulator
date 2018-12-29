@@ -1,25 +1,30 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		Node root = new Folder("");
 		
-		Node bin = new Folder("bin");
-		root.add(bin);
+		PrintWriter cmdOutput;
+		PrintWriter cmdErr;
 		
-		Node users = new Folder("users");
-		bin.add(users);
+		try {
+			FileWriter cmdOutputFile = new FileWriter("output");
+	        cmdOutput = new PrintWriter(cmdOutputFile);
+	        
+	        FileWriter cmdErrorFile = new FileWriter("errors");
+	        cmdErr = new PrintWriter(cmdErrorFile);
+		} catch(IOException e) {
+			System.out.println("Error creating files: " + e);
+			return;
+		}
 		
-		Node Teo = new Folder("Teo");
-		root.add(Teo);
+		Bash bash = new Bash(root, cmdOutput, cmdErr);
+		bash.cmd("cp something here");
 		
-		Node teodor = new File("teodor");
-		users.add(teodor);
-		
-		Node ioana = new File("ioana");
-		users.add(ioana);
-	
-		
-		System.out.println(ioana.getPath());
+		cmdOutput.close();
+		cmdErr.close();
 	}
 	
 }
