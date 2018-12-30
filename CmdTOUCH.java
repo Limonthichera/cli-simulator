@@ -11,11 +11,17 @@ public class CmdTOUCH extends Command {
 		currentDirectory = Tools.getDirectory(currentDirectory, path);
 		
 		if (currentDirectory == null) {
-			errOutput.println("mkdir: " + args[1].replaceAll("/[^/]*$", "") + ": No such directory");
+			errOutput.println("touch: " + args[1].replaceAll("/[^/]*$", "") + ": No such directory");
 			return -1;
 		}
 
 		path = Tools.parsePath(args[1]);
+		
+		if (currentDirectory.getChildByName(path[path.length - 1]) != null) {
+			errOutput.println("mkdir: cannot create directory " + args[1] + ": Node exists");
+			return -1;
+		}
+		
 		currentDirectory.add(new File(path[path.length - 1]));
 		
 		return 0;
