@@ -1,5 +1,7 @@
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Queue;
 
 public class CmdLS extends Command {
 
@@ -30,29 +32,33 @@ public class CmdLS extends Command {
 			return -1;
 		}
 		
-		printChildren(cmdOutput, currentDirectory, flag_R, 0, false);
+		printChildren(cmdOutput, currentDirectory, flag_R);
 		return 0;
 	}
 	
-	private static void printChildren(PrintWriter cmdOutput, Node currentDirectory, boolean R, int rank, boolean submit) {
+	private static void printChildren(PrintWriter cmdOutput, Node currentDirectory, boolean R) {
 		Iterator<Node> childIterator = currentDirectory.getChildIterator();
+		ArrayList<Node> childQueue = new ArrayList<Node>();
 		Node child;
+		
+		cmdOutput.println((currentDirectory.getPath() == "")?("/"):(currentDirectory.getPath()) + ":");
+		
 		while (childIterator.hasNext()) {
 			child = childIterator.next();
 			
-			if (!submit) {
-				for (int i = 0; i < rank; i++) {
-					cmdOutput.print("  ");
-				}
-			}
-			
-			cmdOutput.print(child.getName() + " ");
-			
-			if (!submit) cmdOutput.println();
+			cmdOutput.print(child.getPath() + " ");
 			
 			if (R && child.isDirectory()) {
-				printChildren(cmdOutput, child, R, rank + 1, submit);
+				childQueue.add(child);
 			}
+		}
+		cmdOutput.println();
+		cmdOutput.println();
+		childIterator = childQueue.iterator();
+		while (childIterator.hasNext()) {
+			child = childIterator.next();
+			
+			printChildren(cmdOutput, child, R);
 		}
 	}
 }

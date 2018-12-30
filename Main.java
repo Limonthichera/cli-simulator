@@ -65,7 +65,12 @@ public class Main {
 		Bash bash = new Bash(root, cmdOutput, cmdErr);
 		
 		bash.setCurrentDirectory(root);
-		bash.cmd("ls -R /user/Maria/../Teodor/Desktop/../");
+		cmdOutput.println("1");
+		bash.cmd("cd user");
+		cmdOutput.println("2");
+		bash.cmd("pwd");
+		cmdOutput.println("3");
+		bash.cmd("ls -R");
 		
 		
 		
