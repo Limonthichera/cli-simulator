@@ -13,5 +13,14 @@ public class File extends FilesysBasic {
 	public File(String name) {
 		super(name);
 	}
+	
+	/**
+	 * Always false; this is a file
+	 * @return false
+	 */
+	@Override
+	public boolean isDirectory() {
+		return false;
+	}
 
 }

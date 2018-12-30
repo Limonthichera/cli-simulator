@@ -31,6 +31,12 @@ public interface Node {
 	 */
 	public void setParent(Node parent);
 	
+	/**
+	 * Must be implemented in any node instance
+	 * @return true if directory, false otherwise
+	 */
+	public boolean isDirectory();
+	
 	// --------------- THIS SECTION DOES APPLY TO FOLDERS ONLY ---------------
 	
 	/**

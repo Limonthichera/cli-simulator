@@ -18,4 +18,36 @@ public final class Tools {
 		
 		return words;
 	}
+	
+	public static Node getDirectory(Node currentDirectory, String[] path) {
+		if (path == null) return currentDirectory;
+		
+		for (int i = 0; i < path.length; i++) {
+			if (currentDirectory == null) return null;
+			if (currentDirectory.isDirectory() == false) return null;
+			
+			switch(path[i]) {
+			case "/":
+				Node root = currentDirectory.getParent();
+				while (root != null) {
+					currentDirectory = root;
+					root = currentDirectory.getParent();
+				}
+				break;
+			case ".":
+				break;
+			case "..":
+				currentDirectory = currentDirectory.getParent();
+				break;
+			default:
+				currentDirectory = currentDirectory.getChildByName(path[i]);
+				break;
+			}
+		}
+		
+		if (currentDirectory == null) return null;
+		if (currentDirectory.isDirectory() == false) return null;
+		return currentDirectory;
+		
+	}
 }

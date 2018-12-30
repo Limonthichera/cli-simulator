@@ -63,4 +63,13 @@ public class Folder extends FilesysBasic{
 		
 		return null;
 	}
+	
+	/**
+	 * Always true; is directory
+	 * @return true
+	 */
+	@Override
+	public boolean isDirectory() {
+		return true;
+	}
 }
