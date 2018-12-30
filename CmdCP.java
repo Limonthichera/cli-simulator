@@ -33,7 +33,7 @@ public class CmdCP extends Command {
 		// here it must be the path (assuming a perfect world where the user never makes mistakes in his commands
 		destPath = Tools.parsePath(args[2]);
 		
-		currentDirectory = Tools.getDirectory(currentDirectory, destPath);
+		currentDirectory = Tools.getDirectory(bash.getCurrentDirectory(), destPath);
 		
 		if (currentDirectory == null) {
 			errOutput.println("cp: cannot copy into " + args[2] + ": No such directory");
@@ -45,8 +45,7 @@ public class CmdCP extends Command {
 			return -1;
 		}
 
-		node.getParent().remove(node);
-		currentDirectory.add(node);
+		currentDirectory.add(node.getCopy());
 		return 0;
 	}
 }

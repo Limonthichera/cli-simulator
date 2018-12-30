@@ -17,6 +17,18 @@ public class Folder extends FilesysBasic{
 		super(name);
 		children = new TreeSet<Node>();
 	}
+	
+	public Node getCopy() {
+		Node node = new Folder(getName());
+		node.setParent(getParent());
+		
+		Iterator<Node> childIterator = getChildIterator();
+		while (childIterator.hasNext()) {
+			node.add(childIterator.next().getCopy());
+		}
+		
+		return node;
+	}
 
 	// --------------- THIS SECTION DOES APPLY TO FOLDERS ONLY ---------------
 	

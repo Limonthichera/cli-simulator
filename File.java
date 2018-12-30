@@ -23,4 +23,11 @@ public class File extends FilesysBasic {
 		return false;
 	}
 
+	@Override
+	public Node getCopy() {
+		Node node = new File(getName());
+		node.setParent(getParent());
+		return node;
+	}
+
 }

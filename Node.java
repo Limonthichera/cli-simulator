@@ -32,10 +32,16 @@ public interface Node {
 	public void setParent(Node parent);
 	
 	/**
-	 * Must be implemented in any node instance
+	 * Must be implemented in any node class
 	 * @return true if directory, false otherwise
 	 */
 	public boolean isDirectory();
+	
+	/**
+	 * Must be implemented in any node class
+	 * @return a copy of the original node
+	 */
+	public Node getCopy();
 	
 	// --------------- THIS SECTION DOES APPLY TO FOLDERS ONLY ---------------
 	

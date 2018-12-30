@@ -18,7 +18,8 @@ public class CmdMKDIR extends Command {
 		path = Tools.parsePath(args[1]);
 		
 		if (currentDirectory.getChildByName(path[path.length - 1]) != null) {
-			errOutput.println("mkdir: cannot create directory " + args[1] + ": Node exists");
+			errOutput.println("mkdir: cannot create directory " + 
+					currentDirectory.getChildByName(path[path.length - 1]).getPath() + ": Node exists");
 			return -1;
 		}
 		
