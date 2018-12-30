@@ -14,7 +14,7 @@ public class CmdMV extends Command {
 		currentDirectory = Tools.getDirectory(currentDirectory, srcPath);
 		
 		if (currentDirectory == null) {
-			errOutput.println("mv: cannot copy " + args[1] + ": No such file or directory");
+			errOutput.println("mv: cannot move " + args[1] + ": No such file or directory");
 			return -1;
 		}
 
@@ -36,12 +36,12 @@ public class CmdMV extends Command {
 		currentDirectory = Tools.getDirectory(bash.getCurrentDirectory(), destPath);
 		
 		if (currentDirectory == null) {
-			errOutput.println("mv: cannot copy into " + args[2] + ": No such directory");
+			errOutput.println("mv: cannot move into " + args[2] + ": No such directory");
 			return -1;
 		}
 		
 		if (currentDirectory.getChildByName(node.getName()) != null) {
-			errOutput.println("mv: cannot copy " + args[1] + ": Node exists at destination");
+			errOutput.println("mv: cannot move " + args[1] + ": Node exists at destination");
 			return -1;
 		}
 
