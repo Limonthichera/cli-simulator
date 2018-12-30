@@ -11,7 +11,7 @@ public class CmdCD extends Command {
 		currentDirectory = Tools.getDirectory(currentDirectory, path);
 		
 		if (currentDirectory == null) {
-			errOutput.println("ls: " + args[1] + ": No such directory");
+			errOutput.println("cd: " + args[1] + ": No such directory");
 			return -1;
 		}
 		

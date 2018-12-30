@@ -6,6 +6,8 @@ public final class Tools {
 	}
 	
 	public static String[] parsePath(String path) {
+		//System.out.println(path);
+		if (path.equals("")) return null;
 		if (path.charAt(0) == '/') {
 			// is absolute path. At split, this information will be lost. To prevent that, add a space at the beginning
 			path = " " + path;

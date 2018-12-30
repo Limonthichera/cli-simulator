@@ -69,7 +69,7 @@ public class Bash {
 	 * @see Command
 	 */
 	public int cmd(String cmdLine) {
-		System.out.println("Command is: " + cmdLine);
+		//System.out.println("Executing: " + cmdLine);
 		String[] words = cmdLine.split("[\\s]+");
 		CommandList cmdToken = parseCommandName(words[0]);
 		

@@ -1,7 +1,6 @@
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Queue;
 
 public class CmdLS extends Command {
 
@@ -41,12 +40,13 @@ public class CmdLS extends Command {
 		ArrayList<Node> childQueue = new ArrayList<Node>();
 		Node child;
 		
-		cmdOutput.println((currentDirectory.getPath() == "")?("/"):(currentDirectory.getPath()) + ":");
+		cmdOutput.println((currentDirectory.getPath() == "")?("/:"):(currentDirectory.getPath() + ":"));
 		
 		while (childIterator.hasNext()) {
 			child = childIterator.next();
 			
-			cmdOutput.print(child.getPath() + " ");
+			cmdOutput.print(child.getPath());
+			if (childIterator.hasNext()) cmdOutput.print(" ");
 			
 			if (R && child.isDirectory()) {
 				childQueue.add(child);
