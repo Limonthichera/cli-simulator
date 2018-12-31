@@ -7,6 +7,7 @@ public class CmdLS extends Command {
 	@Override
 	public int execute() {
 		boolean flag_R = false;
+		boolean flag_grep = false;
 		String[] path = null;
 		int pathIndex = 0;
 		
@@ -17,6 +18,12 @@ public class CmdLS extends Command {
 				flag_R = true;
 				
 				continue;
+			}
+			
+			if (args[i].equals("|")) {
+				if (args[i + 1].equals("grep")) {
+					flag_grep = true;
+				} else break;
 			}
 			
 			// here it must be the path (assuming a perfect world where the user never makes mistakes in his commands
@@ -31,8 +38,15 @@ public class CmdLS extends Command {
 			return -1;
 		}
 		
-		printChildren(cmdOutput, currentDirectory, flag_R);
+		if (!flag_grep) {
+			printChildren(cmdOutput, currentDirectory, flag_R);
+			return 0;
+		}
+		
+		// print with grep
+		
 		return 0;
+		
 	}
 	
 	private static void printChildren(PrintWriter cmdOutput, Node currentDirectory, boolean R) {
